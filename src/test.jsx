@@ -7,7 +7,7 @@ const App = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
       setPosts(res.data);
       setLoading(false);
     };
@@ -21,11 +21,11 @@ const App = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>My Blog</h1>
+    <div className="container mt-5">
+      <h1 className="text-primary mb-3">My Blog</h1>
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}
@@ -38,11 +38,7 @@ const App = () => {
 
 export default App;
 
-
-
-
-
-import React from 'react';
+import React from "react";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
@@ -53,10 +49,10 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
 
   return (
     <nav>
-      <ul className='pagination'>
-        {pageNumbers.map(number => (
-          <li key={number} className='page-item'>
-            <a onClick={() => paginate(number)} href='!#' className='page-link'>
+      <ul className="pagination">
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item">
+            <a onClick={() => paginate(number)} href="!#" className="page-link">
               {number}
             </a>
           </li>
@@ -67,5 +63,3 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
 };
 
 export default Pagination;
-
-
