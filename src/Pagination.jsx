@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useCallback } from "react";
 
 export default function Pagination({
   productPerPage,
@@ -13,7 +13,7 @@ export default function Pagination({
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  useEffect(() => {
+  useCallback(() => {
 
     setList(newList);
 
