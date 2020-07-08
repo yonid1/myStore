@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 export default function Pagination({
   productPerPage,
   totalProduct,
   currentPage,
   list,
+  setList,
   setCurrentPage,
-  
 }) {
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-  const currentPosts = list.slice(indexOfFirstProduct, indexOfLastProduct);
+  const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  useCallback(() => {
+    setList(newList);
+  }, [currentPage]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -19,13 +23,22 @@ export default function Pagination({
     pageNumbers.push(i);
   }
 
-  return <nav>
+  return (
+    <nav>
       <ul>
-          {pageNumbers.map(number =>(
-              <li key = {number}>
-                  <a onClick = {paginate(number)} href ='!#'> {number} </a>
-              </li>
-          ))}
+        {pageNumbers.map((number) => (
+          <li key={number}>
+            <a
+              onClick={() => {
+                paginate(number);
+              }}
+              href="!#"
+            >
+              {number}
+            </a>
+          </li>
+        ))}
       </ul>
-  </nav>;
+    </nav>
+  );
 }
