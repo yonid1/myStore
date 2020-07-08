@@ -9,5 +9,37 @@
         "car":"toyota",
         "price":"200",
         "discretion":"old"
+    },
+    {   
+        "car":"volvo",
+        "price":"90",
+        "discretion":"new"
+        
+    },
+    {   
+        "car":"mazda",
+        "price":"250",
+        "discretion":"old"
+    },{   
+        "car":"lexsus",
+        "price":"155",
+        "discretion":"new"
+        
+    },
+    {   
+        "car":"nissan",
+        "price":"2700",
+        "discretion":"old"
+    },
+    {   
+        "car":"B M W",
+        "price":"500",
+        "discretion":"new"
+        
+    },
+    {   
+        "car":"mercedes",
+        "price":"20550",
+        "discretion":"old"
     }
 ]

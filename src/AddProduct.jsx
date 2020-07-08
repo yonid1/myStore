@@ -14,7 +14,7 @@ export default function AddProduct() {
   const [discretion, setDiscretion] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [productPerPage] = useState(2);
+  const [productPerPage] = useState(1);
   const a = new Date();
   const date = a.toLocaleString();
 
@@ -99,7 +99,8 @@ export default function AddProduct() {
         />
       </div>
     <Pagination
-    list = {list}
+    setList = {setList}
+     list = {list}
      productPerPage = {productPerPage} 
      totalProduct = {list.length}
      currentPage = {currentPage}
