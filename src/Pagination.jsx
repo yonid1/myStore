@@ -1,4 +1,4 @@
-import React, { useEffect ,useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 
 export default function Pagination({
   productPerPage,
@@ -8,15 +8,12 @@ export default function Pagination({
   setList,
   setCurrentPage,
 }) {
-  
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
 
   useCallback(() => {
-
     setList(newList);
-
   }, [currentPage]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -31,9 +28,13 @@ export default function Pagination({
       <ul>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <a onClick={paginate(number)} href="!#">
-              {" "}
-              {number}{" "}
+            <a
+              onClick={() => {
+                paginate(number);
+              }}
+              href="!#"
+            >
+              {number}
             </a>
           </li>
         ))}
