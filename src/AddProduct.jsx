@@ -4,25 +4,17 @@ import ListProduct from "./ListProduct";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Sort from "./Sort";
-// import Pagination from './Pagination'
 // import Search from './search'
 
 export default function AddProduct() {
   const [list, setList] = useState(Data);
-  const [listView , setListView] = useState('')
   const [car, setCar] = useState("");
   const [price, setPrice] = useState("");
   const [discretion, setDiscretion] = useState("");
-  
+  const [search, setSearch] = useState("");
+
   const a = new Date();
   const date = a.toLocaleString();
-
-  React.useEffect(()=>{
-console.log('effect');
-
-    const newList = listView.concat({ car, price, date, discretion });
-    setListView(newList);
-  },[])
 
   function handleChange(event) {
     setCar(event.target.value);
@@ -35,16 +27,19 @@ console.log('effect');
   }
 
   function HandelAdd() {
-    const newList = listView.concat({ car, price, date, discretion });
+    const newList = list.concat({ car, price, date, discretion });
     if ((car !== "") & (price !== "") & (discretion !== "")) {
-      setListView(newList);
+      setList(newList);
     }
 
     setCar("");
     setPrice("");
     setDiscretion("");
   }
- 
+  function RemoveProduct(id) {
+    const newList = list.filter((item, index) => index !== id);
+    setList(newList);
+  }
 
   return (
     <div>
@@ -91,15 +86,13 @@ console.log('effect');
 
       <div>
         <ListProduct
-         listView = {listView}
-         setListView = {setListView}
-          // setList={setList}
+          search={search}
+          setSearch={setSearch}
+          setList={setList}
           list={list}
-          
+          RemoveProduct={RemoveProduct}
         />
       </div>
-    
-
     </div>
   );
 }

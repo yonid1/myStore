@@ -1,23 +1,21 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useCallback } from "react";
 
-export default function Pagination(props) {
-  // const [listView , setListView] = useState(props.listSearch)
- const totalProduct = props.listSearch.length
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productPerPage] = useState(3);
-
-  
+export default function Pagination({
+  productPerPage,
+  totalProduct,
+  currentPage,
+  list,
+  setList,
+  setCurrentPage,
+}) {
   useEffect(() => {
     const indexOfLastProduct = currentPage * productPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-    const newList = props.listSearch.slice(indexOfFirstProduct, indexOfLastProduct);
-  
-    props.setlistSearch(newList);
-
-  },[currentPage] );
+    const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
+    setList(newList);
+  }, [currentPage, list]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalProduct / productPerPage); i++) {
@@ -27,12 +25,14 @@ export default function Pagination(props) {
   return (
     <nav>
       <ul>
-        {/* {listView.map((item ,index) => (<li key = {index}>   {item.car} </li>)) } */}
         {pageNumbers.map((number) => (
-
           <li key={number}>
-            <a onClick={()=> paginate(number)} href="!#" >
-              {" "}
+            <a
+              onClick={() => {
+                paginate(number);
+              }}
+              href="!#"
+            >
               {number}
             </a>
           </li>
