@@ -13,7 +13,7 @@ export default function Pagination({
     const indexOfFirstProduct = indexOfLastProduct - productPerPage;
     const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
     setList(newList);
-  }, [currentPage]);
+  }, [currentPage, list]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
