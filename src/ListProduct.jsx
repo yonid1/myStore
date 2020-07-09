@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-// import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from "@material-ui/core/ListItem";
 import TextField from "@material-ui/core/TextField";
 import Pagination from "./Pagination";
 
 export default function ListProduct(props) {
-  // const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage] = useState(2);
   const [listView, setListView] = useState(props.list);
@@ -20,13 +17,8 @@ export default function ListProduct(props) {
       return cars.car.toLowerCase().includes(props.search.toLowerCase());
     });
     setListSearch(newList);
-  }, [props.search]);
+  }, [props.search, props.list]);
 
-  // React.useEffect(()=>{
-  //     console.log("useEffect list");
-
-  //     console.log(props.list);
-  // },[props.list])
   return (
     <div>
       <TextField
@@ -35,7 +27,6 @@ export default function ListProduct(props) {
         variant="outlined"
         size="small"
         type="text"
-        // value={props.search}
         onChange={(e) => props.setSearch(e.target.value)}
       />
 
