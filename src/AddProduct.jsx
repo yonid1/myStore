@@ -4,7 +4,6 @@ import ListProduct from "./ListProduct";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Sort from "./Sort";
-import Pagination from './Pagination'
 // import Search from './search'
 
 export default function AddProduct() {
@@ -13,13 +12,9 @@ export default function AddProduct() {
   const [price, setPrice] = useState("");
   const [discretion, setDiscretion] = useState("");
   const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productPerPage] = useState(1);
+
   const a = new Date();
   const date = a.toLocaleString();
-
-
-
 
   function handleChange(event) {
     setCar(event.target.value);
@@ -98,15 +93,6 @@ export default function AddProduct() {
           RemoveProduct={RemoveProduct}
         />
       </div>
-    <Pagination
-    setList = {setList}
-     list = {list}
-     productPerPage = {productPerPage} 
-     totalProduct = {list.length}
-     currentPage = {currentPage}
-     setCurrentPage = {setCurrentPage}
-     />
-
     </div>
   );
 }

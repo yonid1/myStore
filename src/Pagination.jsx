@@ -8,11 +8,10 @@ export default function Pagination({
   setList,
   setCurrentPage,
 }) {
-  const indexOfLastProduct = currentPage * productPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-  const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
-
-  useCallback(() => {
+  useEffect(() => {
+    const indexOfLastProduct = currentPage * productPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productPerPage;
+    const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
     setList(newList);
   }, [currentPage]);
 
