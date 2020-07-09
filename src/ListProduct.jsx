@@ -11,13 +11,16 @@ import TextField from "@material-ui/core/TextField";
 
 export default function ListProduct(props) {
   const [listSearch, setlistSearch] = useState(props.list);
-
+  const [search, setSearch] = useState("");
   React.useEffect(() => {
     const newList = props.list.filter((cars) => {
-      return cars.car.toLowerCase().includes(props.search.toLowerCase());
+      return cars.car.toLowerCase().includes(search.toLowerCase());
     });
     setlistSearch(newList);
-  }, [props.search]);
+  }, [search]);
+
+
+  
 
   // React.useEffect(()=>{
   //     console.log("useEffect list");
@@ -33,7 +36,7 @@ export default function ListProduct(props) {
         size="small"
         type="text"
         // value={props.search}
-        onChange={(e) => props.setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
 
       <List>
@@ -41,6 +44,7 @@ export default function ListProduct(props) {
           <ListItem key={item.car}>
             <div>{item.car}</div> {item.price} {item.date} {item.discretion}
             <IconButton
+           
               edge="end"
               aria-label="delete"
               size="small"
@@ -54,7 +58,7 @@ export default function ListProduct(props) {
         ))}
       </List>
       <Pagination
-        
+        setlistSearch={setlistSearch}
         listSearch={listSearch}
         
       />

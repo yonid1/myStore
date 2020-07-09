@@ -9,15 +9,20 @@ import Sort from "./Sort";
 
 export default function AddProduct() {
   const [list, setList] = useState(Data);
+  const [listView , setListView] = useState('')
   const [car, setCar] = useState("");
   const [price, setPrice] = useState("");
   const [discretion, setDiscretion] = useState("");
-  const [search, setSearch] = useState("");
+  
   const a = new Date();
   const date = a.toLocaleString();
 
+  React.useEffect(()=>{
+console.log('effect');
 
-
+    const newList = listView.concat({ car, price, date, discretion });
+    setListView(newList);
+  },[])
 
   function handleChange(event) {
     setCar(event.target.value);
@@ -30,19 +35,16 @@ export default function AddProduct() {
   }
 
   function HandelAdd() {
-    const newList = list.concat({ car, price, date, discretion });
+    const newList = listView.concat({ car, price, date, discretion });
     if ((car !== "") & (price !== "") & (discretion !== "")) {
-      setList(newList);
+      setListView(newList);
     }
 
     setCar("");
     setPrice("");
     setDiscretion("");
   }
-  function RemoveProduct(id) {
-    const newList = list.filter((item, index) => index !== id);
-    setList(newList);
-  }
+ 
 
   return (
     <div>
@@ -83,17 +85,17 @@ export default function AddProduct() {
         >
           Add
         </Button>
-        {/* <Sort setList={setList} list={list} /> */}
+        <Sort setList={setList} list={list} />
         {/* <Search search = {search}  setSearch = {setSearch} setList={setList} list={list} /> */}
       </div>
 
       <div>
         <ListProduct
-          search={search}
-          setSearch={setSearch}
+         listView = {listView}
+         setListView = {setListView}
           // setList={setList}
           list={list}
-          RemoveProduct={RemoveProduct}
+          
         />
       </div>
     
