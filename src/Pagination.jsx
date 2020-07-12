@@ -1,4 +1,14 @@
 import React, { useEffect, useCallback } from "react";
+import PaginationStyle from "@material-ui/lab/Pagination";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 export default function Pagination({
   productPerPage,
@@ -14,7 +24,7 @@ export default function Pagination({
     const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
     setList(newList);
   }, [currentPage, list]);
-
+  const classes = useStyles();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const pageNumbers = [];
@@ -23,21 +33,42 @@ export default function Pagination({
   }
 
   return (
-    <nav>
-      <ul>
-        {pageNumbers.map((number) => (
-          <li key={number}>
-            <a
-              onClick={() => {
-                paginate(number);
-              }}
-              href="!#"
-            >
-              {number}
-            </a>
-          </li>
+    <div className={classes.root}>
+      
+        {pageNumbers.map((number, index) => (
+              
+
+          <PaginationStyle
+            onClick={() => {
+              paginate(number);
+            }}
+            href="!#"
+            count = {number}
+          />
+            
+          
+          
+
         ))}
-      </ul>
-    </nav>
+      
+    </div>
+
+    // <nav>
+    //   <ul>
+    //     {pageNumbers.map((number) => (
+    //       <li key={number}>
+    //         <a
+    //           onClick={() => {
+    //             paginate(number);
+    //           }}
+    //           href="!#"
+    //         >
+    //           {number}
+    //         </a>
+    //       </li>
+    //     ))}
+    //   </ul>
+    // </nav>
   );
+
 }
