@@ -1,11 +1,12 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import PaginationStyle from "@material-ui/lab/Pagination";
 import { makeStyles } from "@material-ui/core/styles";
+import { logDOM } from "@testing-library/react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(70),
     },
   },
 }));
@@ -17,58 +18,34 @@ export default function Pagination({
   list,
   setList,
   setCurrentPage,
-}) {
+}) 
+
+{
+
+  console.log("list",list);
+  
   useEffect(() => {
     const indexOfLastProduct = currentPage * productPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productPerPage;
     const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
+    console.log(newList,"Pagination");
+    
     setList(newList);
+    
+    
   }, [currentPage, list]);
   const classes = useStyles();
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalProduct / productPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const paginate = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className={classes.root}>
-      
-        {pageNumbers.map((number, index) => (
-              
-
-          <PaginationStyle
-            onClick={() => {
-              paginate(number);
-            }}
-            href="!#"
-            count = {number}
-          />
-            
-          
-          
-
-        ))}
-      
+      <PaginationStyle
+        onChange={paginate}
+        href="!#"
+        count={totalProduct / productPerPage}
+      />
     </div>
-
-    // <nav>
-    //   <ul>
-    //     {pageNumbers.map((number) => (
-    //       <li key={number}>
-    //         <a
-    //           onClick={() => {
-    //             paginate(number);
-    //           }}
-    //           href="!#"
-    //         >
-    //           {number}
-    //         </a>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </nav>
   );
-
 }
