@@ -18,21 +18,16 @@ export default function Pagination({
   list,
   setList,
   setCurrentPage,
-}) 
+}) {
+  console.log("list", list);
 
-{
-
-  console.log("list",list);
-  
   useEffect(() => {
     const indexOfLastProduct = currentPage * productPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productPerPage;
     const newList = list.slice(indexOfFirstProduct, indexOfLastProduct);
-    console.log(newList,"Pagination");
-    
+    console.log(newList, "Pagination");
+
     setList(newList);
-    
-    
   }, [currentPage, list]);
   const classes = useStyles();
   const paginate = (event, value) => {
@@ -44,7 +39,7 @@ export default function Pagination({
       <PaginationStyle
         onChange={paginate}
         href="!#"
-        count={totalProduct / productPerPage}
+        count={Math.ceil(totalProduct / productPerPage)}
       />
     </div>
   );
