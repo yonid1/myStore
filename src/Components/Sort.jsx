@@ -16,6 +16,7 @@ export default function Sort(props) {
     if (event.target.value === "2") {
       const newLIst = props.list.slice();
       newLIst.sort((a, b) => (a.price > b.price) ? 1 : -1);
+      
       props.setList(newLIst);
     }
   }

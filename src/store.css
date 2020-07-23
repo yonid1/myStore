@@ -1,0 +1,108 @@
+.list-item-head{
+    width: 500px;
+    height: 150px;
+}
+.name-product {
+    
+    margin-top: 50px;
+    margin-left: 900px;
+   width: 215px;
+   height: 80px;
+}               
+.price{
+    width: 215px;
+   height: 80px;
+    margin-top: 50px;
+    margin-left: 900px;
+}                                                                 
+.discretion{
+    width: 215px;
+   height: 80px;
+    margin-top: 50px;
+    margin-left: 900px;
+}
+.button{
+    margin-top: -340px;
+    width: 80px;
+    height: 80px;
+    margin-left: 100px;
+
+}
+.list-product{
+   
+    border: 2px solid black;
+    width: 500px;
+    height: 150px;
+}
+.sort{
+    margin-top: -98px;
+    margin-left: 250px;
+    width: 80px;
+    height: 80px;
+
+}
+.search{
+    margin-top: -70px;
+    margin-left: 400px;
+   width: 215px;
+   height: 80px;
+}
+.car{
+    font-size: 35px;
+    font-style: italic;
+    font-family: david;
+    padding: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
+   width: 100px;
+   height: 40px;
+}
+.price-list{
+    font-size: 25px;
+    text-align: center;
+    margin-top: -55px;
+    margin-left: 153px;
+   width: 100px;
+   height: 40px;
+}
+.div-upbeat{
+    margin-top: -80px;
+    margin-left: 500px;
+}
+
+/* .car{
+    padding: 10px;
+    
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 90px;
+   width: 100px;
+   height: 40px;
+}
+.price-list{
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 90px;
+   width: 100px;
+   height: 40px;
+}
+.date{
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 90px;
+   width: 200px;
+   height: 40px;
+}
+.discretion-list{
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 90px;
+   width: 200px;
+   height: 40px;
+}
+.button-delete{
+    margin-top: -10px;
+    margin-left: 90px;
+   width: 200px;
+   height: 40px;
+} */
