@@ -5,8 +5,7 @@ import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
 // import List from './listprodact'
-import AddProduct from "./AddProduct";
-
+import AddProduct from "./Components/AddProduct";
 
 function MyStore() {
   return (
@@ -18,8 +17,8 @@ function MyStore() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <MyStore/>
-    
+    <MyStore />
+
     <AddProduct />
   </React.StrictMode>,
   document.getElementById("root")

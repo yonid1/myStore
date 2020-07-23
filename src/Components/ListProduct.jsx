@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 import Button from "@material-ui/core/Button";
 import Update from "./update";
 
-import "./store.css";
+import "../store.css";
 
 export default function ListProduct(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,10 +25,8 @@ export default function ListProduct(props) {
     setListSearch(newList);
   }, [props.search, props.list]);
 
-  
-
   function update(index) {
-    setShowDiv(true)
+    setShowDiv(true);
     setIndex(index);
   }
 
@@ -64,7 +62,10 @@ export default function ListProduct(props) {
                     size="small"
                     variant="outlined"
                     type="button"
-                    onClick={() => props.RemoveProduct(index)}
+                    onClick={() => {
+                      console.log("remove", index);
+                      props.RemoveProduct(index);
+                    }}
                   >
                     <DeleteIcon />
                   </IconButton>
